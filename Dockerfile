@@ -1,0 +1,14 @@
+# Use Amazon Corretto 21 with platform specification
+FROM --platform=linux/amd64 amazoncorretto:21
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file from the host to the container
+COPY build/libs/expenseservice-0.0.1-SNAPSHOT.jar /app/expenseservice-0.0.1-SNAPSHOT.jar
+
+# Expose the port that your Java service listens on
+EXPOSE 9820
+
+# Set the entry point for the container
+ENTRYPOINT ["java", "-jar", "/app/expenseservice-0.0.1-SNAPSHOT.jar"]
